@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.express as px 
 from plotly_calplot import calplot
 
-df = pd.read_csv('soldiers_info_detaild.csv')
+df = pd.read_csv('soldiers_info_detaild_test.csv')
 st.set_page_config(layout="wide")
 # st.title(f"חללי המלחמה **{df.Name.count()}**")
 col1, col2 = st.columns([0.4, 0.6],gap="medium")
@@ -50,7 +50,7 @@ with col2:
                 y='Count',
                 name='נופלים',
                 colorscale=[[0, 'lightblue'], [0.5, 'blue'], [1, 'blue']],
-                space_between_plots=0.4,
+                space_between_plots=0.1,
                 )
     st.plotly_chart(dates)
 
@@ -77,12 +77,12 @@ with col2:
             )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         st.plotly_chart(fig, use_container_width=True)
-    with tab2:
-        city_data = df.City.value_counts()
-        city_chart = px.bar(
-            city_data, 
-            x='index', 
-            y='City',
-            labels={'City': 'נפילות', 'index': 'עיר'},
-            )
-        st.plotly_chart(city_chart)
+    # with tab2:
+        # city_data = df.City.value_counts()
+        # city_chart = px.bar(
+        #     city_data, 
+        #     x='index', 
+        #     y='City',
+        #     labels={'City': 'נפילות', 'index': 'עיר'},
+        #     )
+        # st.plotly_chart(city_chart)
