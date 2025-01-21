@@ -4,13 +4,23 @@ import plotly.express as px
 from plotly_calplot import calplot
 
 df = pd.read_csv('soldiers_info_detaild.csv')
+
 st.set_page_config(
     page_title="נתוני נופלים חרבות ברזל",
     page_icon="yizkor-22.jpg",
     layout="wide",
     )
-col1, col2 = st.columns([0.4, 0.6],gap="medium")
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)
 
+st.title("נתוני נופלים חרבות ברזל")
+
+col1, col2 = st.columns([0.4, 0.6],gap="medium")
 
 with col1:
     rank_data = df.Rank.value_counts()
